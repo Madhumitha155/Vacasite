@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React,{Component} from 'react';
+import {BrowserRouter as Router,Route} from 'react-router-dom'
+import NavBar from './utility/NavBar/NavBar';
+import Home from './pages/Home/Home';
+import './App.css'
+import Search from './pages/Search/Search';
+import Account from './pages/Account/Account';
+import Modal from './utility/Modal/Modal'
+import SinglePageVenue from './pages/SinglePageVenue/SinglePageVenue';
+import CityVenues from './pages/CityVenues/CityVenues';
+import PaymentSuccess from './pages/PaymentSuccess/PaymentSuccess';
+class App extends Component{
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+    <Route path='/' component={NavBar}></Route>
+    <Route exact path='/' component={Home}></Route>
+    <Route exact path='/venue/:vid' component={SinglePageVenue}></Route>
+    <Route exact path='/city/:cityName' component={CityVenues}></Route>
+    <Route exact path='/payment-success/:token' component={PaymentSuccess}></Route>
+    <Route path='/' component={Modal}></Route>
+    <Route path='/search/:searchTerm' component={Search}/>
+    <Route path='/account' component={Account}></Route>
+    </Router>
+  )
+  }
 }
 
 export default App;

@@ -1,0 +1,13 @@
+.activities{
+    margin-top: 20px;
+}
+.activities .activity a{
+    color:black;
+}
+.activities .activity img{
+    max-width:100%;
+    border-radius:8px;
+}
+.activities .activity .star{
+    color:rgb(251, 58, 58);
+}
