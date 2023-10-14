@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+//import lazy,Suspense from 'react
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import NavBar from './utility/NavBar/NavBar';
 import Home from './pages/Home/Home';
@@ -9,6 +10,8 @@ import Modal from './utility/Modal/Modal'
 import SinglePageVenue from './pages/SinglePageVenue/SinglePageVenue';
 import CityVenues from './pages/CityVenues/CityVenues';
 import PaymentSuccess from './pages/PaymentSuccess/PaymentSuccess';
+//const Search =lazy(()=>import('./pages/Search/Search'));
+//It will render the compnent only when the user needs it and unless time=>Optimization
 class App extends Component{
   render(){
   return (

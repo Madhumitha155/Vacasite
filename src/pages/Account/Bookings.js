@@ -19,10 +19,10 @@ function Bookings(props) {
             bid,
           }
           const resp=await axios.post(url,data);
-          if(resp.data.message==="cancelled"){
+          if(resp.data.msg==="cancelled"){
             swal({
               title:"Cancelled",
-              icon:"Success"
+              icon:"success"
             })}
             else{
               swal({
