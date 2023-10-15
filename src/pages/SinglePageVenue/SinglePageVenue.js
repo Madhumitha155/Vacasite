@@ -60,16 +60,10 @@ class SinglePageVenue extends Component {
       }
         const sessionVar = await axios.post(stripeSessionUrl, data);
         stripe.redirectToCheckout({
-          sessionId: sessionVar.data.id,
-        }).then((result) => {
-          if (result.error) {
-            console.error(result.error.message);
-          } else {
-            window.location.href = process.env.NODE_ENV === 'production'
-              ? 'https://vacasite.vercel.app/payment-success/:token'
-              : 'http://localhost:3000/payment-success/:token';
-          }
-        });
+          sessionId:sessionVar.data.id,
+        }).then((res)=>{
+            console.log(res)
+        })
         
     }
   }
