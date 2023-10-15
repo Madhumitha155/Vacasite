@@ -56,14 +56,20 @@ class SinglePageVenue extends Component {
         checkOut:this.state.checkOut,
         token:this.props.auth.token,
         numberOfGuest: this.state.guests,        
-        currency:'USD'
+        currency:'USD',
       }
         const sessionVar = await axios.post(stripeSessionUrl, data);
         stripe.redirectToCheckout({
-          sessionId:sessionVar.data.id,
-        }).then((res)=>{
-            console.log(res)
-        })
+          sessionId: sessionVar.data.id,
+        }).then((result) => {
+          if (result.error) {
+            console.error(result.error.message);
+          } else {
+            window.location.href = process.env.NODE_ENV === 'production'
+              ? 'https://vacasite.vercel.app/payment-success/:token'
+              : 'http://localhost:3000/payment-success/:token';
+          }
+        });
         
     }
   }
